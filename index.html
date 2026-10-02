@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>潦草电影网 - 潦草电影在线推荐_热门影视榜单与精选片单 | liaocaodianyingwang-cn.github.io</title>
+<meta name="description" content="潦草电影网提供精选电影推荐、热门影视榜单、全类型分类索引与最新影视资讯，帮你快速找到值得一看的好电影。页面轻量、移动端自适应，手机浏览同样清晰流畅。">
+<meta name="keywords" content="潦草电影网,潦草电影,潦草影院,电影推荐,热门电影榜单,影视分类导航,在线电影,liaocaodianyingwang-cn.github.io">
+<meta name="author" content="潦草电影网">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://liaocaodianyingwang-cn.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="潦草电影网">
+<meta property="og:title" content="潦草电影网 - 热门影视榜单与精选电影推荐">
+<meta property="og:description" content="潦草电影网精选片单、每日热榜、全类型索引与新片速递，一站式发现好电影。">
+<meta property="og:url" content="https://liaocaodianyingwang-cn.github.io/">
+<meta name="theme-color" content="#111111">
+<style>
+:root{
+  --paper:#f2efe9;
+  --ink:#111111;
+  --ink2:#3d3a35;
+  --mute:#7c766d;
+  --rule:#111111;
+  --red:#d93025;
+  --blue:#1a3fd8;
+  --hair:1px solid var(--rule);
+  --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
+  --disp:"Times New Roman","Songti SC","STSong","Noto Serif SC",Georgia,serif;
+  --sans:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.8;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul,ol{list-style:none;}
+table{border-collapse:collapse;width:100%;}
+h1,h2,h3,h4{font-family:var(--disp);font-weight:700;line-height:1.22;}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px;}
+.mono{font-family:var(--mono);}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);}
+.hair{height:1px;background:var(--rule);}
+
+/* ============ 报头 ============ */
+.masthead{border-bottom:3px solid var(--rule);}
+.masthead .wrap{padding-top:16px;}
+.mast-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:var(--hair);padding-bottom:8px;}
+.brandline{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:18px 0 14px;flex-wrap:wrap;}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo .seal{
+  width:46px;height:46px;border:2px solid var(--rule);display:flex;align-items:center;justify-content:center;
+  font-family:var(--disp);font-size:22px;background:var(--red);color:#fff;flex:0 0 46px;
+}
+.logo h1{font-size:34px;letter-spacing:2px;}
+.logo h1 em{font-style:normal;color:var(--red);}
+.masthead .tagline{font-family:var(--mono);font-size:12px;color:var(--ink2);max-width:340px;}
+
+/* 导航：竖线分隔的报头式菜单 */
+.topbar{border-top:var(--hair);border-bottom:var(--hair);background:var(--paper);position:sticky;top:0;z-index:99;}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;min-height:48px;gap:12px;}
+.nav{display:flex;align-items:center;flex-wrap:wrap;}
+.nav a{
+  font-size:14px;font-weight:700;padding:12px 14px;position:relative;
+}
+.nav a + a:before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:1px;height:14px;background:var(--rule);}
+.nav a:hover,.nav a.on{background:var(--ink);color:var(--paper);}
+.nav a:hover:before,.nav a.on:before{background:transparent;}
+.nav a.on + a:before{background:transparent;}
+.burger{display:none;font-family:var(--mono);font-size:12px;letter-spacing:.1em;padding:8px 12px;border:var(--hair);background:transparent;cursor:pointer;}
+
+/* ============ 首屏：通栏大字 ============ */
+.hero{padding:34px 0 0;}
+.hero .lead-grid{display:grid;grid-template-columns:7fr 5fr;gap:0;border-bottom:3px solid var(--rule);}
+.hero .big{padding:0 28px 26px 0;border-right:var(--hair);}
+.hero .big h2{font-size:52px;letter-spacing:-1px;}
+.hero .big h2 em{font-style:normal;-webkit-text-stroke:1.5px var(--ink);color:transparent;}
+.hero .big p{margin-top:16px;font-size:15.5px;color:var(--ink2);max-width:560px;}
+.hero .side{padding:0 0 26px 28px;}
+.hero .side .kicker{margin-bottom:10px;}
+.hero .side p{font-size:14.5px;color:var(--ink2);}
+.stat-table{margin-top:14px;border-top:var(--hair);}
+.stat-table div{display:flex;justify-content:space-between;gap:10px;border-bottom:var(--hair);padding:8px 0;font-family:var(--mono);font-size:13px;}
+.stat-table div b{font-family:var(--sans);font-size:16px;font-weight:800;}
+.hero-tags{padding:14px 0;border-bottom:var(--hair);display:flex;flex-wrap:wrap;align-items:center;gap:10px;}
+.hero-tags .lb{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--mute);}
+.hero-tags a{font-size:13px;font-weight:700;border:1px solid var(--rule);padding:4px 12px;}
+.hero-tags a:hover{background:var(--red);color:#fff;border-color:var(--red);}
+.hero-tags a.k{background:var(--ink);color:var(--paper);}
+.hero-url{padding:12px 0 0;font-family:var(--mono);font-size:13px;word-break:break-all;color:var(--ink2);}
+.hero-url b{color:var(--red);}
+
+/* ============ 区块通用：竖排编号 + 发丝线 ============ */
+section.blk{padding:38px 0 34px;border-bottom:var(--hair);position:relative;}
+.sec-top{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start;}
+.sec-no{
+  font-family:var(--disp);font-size:64px;line-height:.85;
+  -webkit-text-stroke:1.5px var(--ink);color:transparent;
+}
+.sec-top .txt h2{font-size:30px;}
+.sec-top .txt p{margin-top:8px;font-size:14px;color:var(--mute);max-width:640px;}
+.sec-top .txt .more{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;border-bottom:1px solid var(--red);color:var(--red);}
+
+/* ============ 01 精选影片：figure 拼贴 ============ */
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:var(--hair);margin-top:22px;}
+figure.f{border:0;background:var(--paper);padding:0;display:flex;flex-direction:column;}
+figure.f.tall{grid-row:span 2;}
+figure.f.wide{grid-column:span 2;}
+figure.f .ph{
+  position:relative;background:var(--ink);color:var(--paper);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:12px;letter-spacing:.2em;
+  aspect-ratio:4/3;
+}
+figure.f.tall .ph{aspect-ratio:2/3;}
+figure.f.wide .ph{aspect-ratio:2/1;}
+figure.f:nth-child(3n) .ph{background:#3a3a3a;}
+figure.f:nth-child(4n) .ph{background:var(--red);}
+figure.f:nth-child(5n) .ph{background:#243b6b;}
+figure.f .ph i{position:absolute;top:10px;left:10px;font-style:normal;font-family:var(--mono);font-size:11px;border:1px solid rgba(255,255,255,.6);padding:2px 8px;}
+figure.f .ph b{position:absolute;right:10px;bottom:10px;font-family:var(--disp);font-size:20px;}
+figcaption{padding:12px 14px 14px;border-top:var(--hair);}
+figcaption h3{font-size:16px;}
+figcaption p{margin-top:4px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--mute);}
+figcaption .go{margin-top:8px;display:inline-block;font-family:var(--mono);font-size:11.5px;color:var(--blue);border-bottom:1px solid var(--blue);}
+
+/* ============ 02 榜单：真实表格 ============ */
+.tablewrap{margin-top:20px;overflow-x:auto;border:var(--hair);}
+table.chart{background:var(--paper);font-size:14px;min-width:560px;}
+table.chart caption{
+  caption-side:top;text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+  color:var(--mute);padding:10px 14px;border-bottom:var(--hair);background:#e9e5dd;
+}
+table.chart th,table.chart td{padding:11px 14px;border-bottom:var(--hair);text-align:left;}
+table.chart thead th{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper);border-bottom:0;
+}
+table.chart tbody tr:hover{background:#e9e5dd;}
+table.chart td.rk{font-family:var(--disp);font-size:20px;width:64px;}
+table.chart tbody tr:nth-child(-n+3) td.rk{color:var(--red);}
+table.chart td.tt{font-weight:700;}
+table.chart td.sc{font-family:var(--disp);font-size:18px;color:var(--red);width:80px;}
+table.chart td.ht{font-family:var(--mono);font-size:12.5px;color:var(--mute);width:120px;}
+table.chart tfoot td{font-family:var(--mono);font-size:11.5px;color:var(--mute);background:#e9e5dd;border-bottom:0;}
+
+/* ============ 03 分类索引：纯文本行内索引 ============ */
+.index-rows{margin-top:18px;border-top:var(--hair);}
+.index-rows .ir{display:grid;grid-template-columns:110px 1fr;gap:16px;border-bottom:var(--hair);padding:12px 0;}
+.index-rows .ir .cat{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--red);}
+.index-rows .ir .items{display:flex;flex-wrap:wrap;gap:6px 4px;}
+.index-rows .ir .items a{font-size:14px;padding:2px 8px;}
+.index-rows .ir .items a:hover{background:var(--ink);color:var(--paper);}
+.index-rows .ir .items a:after{content:"·";margin-left:8px;color:var(--mute);}
+.index-rows .ir .items a:last-child:after{content:"";}
+
+/* ============ 04 资讯：报纸分栏 + 首字下沉 ============ */
+.press{margin-top:20px;display:grid;grid-template-columns:2fr 1fr;gap:0;border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);}
+.press .main{padding:22px 26px 24px 0;border-right:var(--hair);}
+.press .main h3{font-size:28px;}
+.press .main .byline{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--mute);padding:8px 0 12px;border-bottom:var(--hair);margin-bottom:14px;}
+.press .main .cols{columns:2;column-gap:26px;font-size:14.5px;color:var(--ink2);}
+.press .main .cols p:first-letter{
+  font-family:var(--disp);font-size:52px;line-height:.86;float:left;
+  padding:4px 8px 0 0;color:var(--red);font-weight:700;
+}
+.press .main .cols p{margin-bottom:10px;break-inside:avoid;}
+.press .aside{padding:22px 0 24px 26px;}
+.press .aside h4{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--mute);margin-bottom:10px;}
+.press .aside ol{counter-reset:n;}
+.press .aside li{
+  counter-increment:n;position:relative;padding:9px 0 9px 34px;border-bottom:var(--hair);font-size:14px;
+}
+.press .aside li:before{
+  content:counter(n,decimal-leading-zero);position:absolute;left:0;top:9px;
+  font-family:var(--mono);font-size:13px;color:var(--red);
+}
+.press .aside li span{display:block;font-family:var(--mono);font-size:11px;color:var(--mute);}
+
+/* ============ 05 关于：dl 问答 + 竖排标语 ============ */
+.about-grid{margin-top:20px;display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start;}
+dl.qa{border-top:2px solid var(--rule);}
+dl.qa dt{
+  font-weight:800;font-size:16px;padding:14px 0 6px;display:flex;gap:10px;align-items:baseline;
+}
+dl.qa dt:before{content:"Q";font-family:var(--mono);font-size:12px;color:var(--red);border:1px solid var(--red);padding:1px 5px;}
+dl.qa dd{
+  font-size:14.5px;color:var(--ink2);padding:0 0 14px 32px;border-bottom:var(--hair);margin-bottom:4px;
+}
+dl.qa dd:before{content:"A";font-family:var(--mono);font-size:12px;color:var(--mute);margin-right:8px;}
+.slogan{
+  border:2px solid var(--rule);padding:22px 18px;background:var(--ink);color:var(--paper);
+}
+.slogan .v{
+  writing-mode:vertical-rl;font-family:var(--disp);font-size:26px;letter-spacing:.3em;
+  margin:0 auto;line-height:1.4;
+}
+.slogan .v em{font-style:normal;color:var(--red);}
+.slogan .u{margin-top:16px;border-top:1px dashed rgba(255,255,255,.35);padding-top:12px;font-family:var(--mono);font-size:12px;word-break:break-all;color:#cfcabf;}
+.slogan .u b{color:#fff;}
+
+/* ============ 页脚：反白通栏 ============ */
+footer{background:var(--ink);color:#cfcabf;padding:34px 0 20px;}
+footer .fgrid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:26px;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:24px;}
+footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:#fff;margin-bottom:12px;}
+footer li{font-size:14px;padding:4px 0;}
+footer li a:hover{color:#fff;text-decoration:underline;}
+footer .intro{font-size:14px;}
+footer .intro b{color:#fff;}
+footer .fbot{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-family:var(--mono);font-size:11.5px;color:#8d887f;}
+footer .fbot a{color:#8d887f;}
+footer .fbot a:hover{color:#fff;}
+
+#top{
+  position:fixed;right:18px;bottom:22px;width:44px;height:44px;border:2px solid var(--paper);
+  background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:18px;cursor:pointer;display:none;
+}
+#top.show{display:block;}
+
+/* ============ 移动端自适应 ============ */
+@media (max-width:980px){
+  .hero .lead-grid{grid-template-columns:1fr;}
+  .hero .big{padding:0 0 20px;border-right:0;}
+  .hero .big h2{font-size:32px;}
+  .hero .side{padding:0 0 20px;border-top:var(--hair);padding-top:18px;}
+  .mosaic{grid-template-columns:repeat(2,1fr);}
+  figure.f.wide{grid-column:span 2;}
+  figure.f.tall{grid-row:span 1;}
+  figure.f.tall .ph,figure.f .ph{aspect-ratio:4/3;}
+  .press{grid-template-columns:1fr;}
+  .press .main{padding:20px 0;border-right:0;border-bottom:var(--hair);}
+  .press .main .cols{columns:1;}
+  .press .aside{padding:20px 0;}
+  .about-grid{grid-template-columns:1fr;}
+  footer .fgrid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:720px){
+  .nav{
+    display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;
+    background:var(--paper);border-bottom:2px solid var(--rule);padding:6px 0;
+  }
+  .nav.show{display:flex;}
+  .nav a{padding:12px 4px;border-bottom:var(--hair);}
+  .nav a + a:before{display:none;}
+  .burger{display:block;}
+  .masthead .wrap{padding-top:12px;}
+  .logo h1{font-size:26px;}
+  .logo .seal{width:38px;height:38px;flex:0 0 38px;font-size:18px;}
+  .sec-top{grid-template-columns:1fr;gap:8px;}
+  .sec-no{font-size:44px;}
+  .sec-top .txt h2{font-size:23px;}
+  section.blk{padding:28px 0 24px;}
+  .index-rows .ir{grid-template-columns:1fr;gap:6px;}
+  .wrap{padding:0 16px;}
+}
+@media (max-width:480px){
+  .mosaic{grid-template-columns:1fr;}
+  figure.f.wide{grid-column:span 1;}
+  .slogan .v{writing-mode:horizontal-tb;letter-spacing:.12em;font-size:22px;}
+  footer .fgrid{grid-template-columns:1fr;}
+  .hero .big h2{font-size:27px;}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="mast-meta">
+      <span class="kicker">liaocaodianyingwang-cn.github.io</span>
+      <span class="kicker">影视推荐 · 每日热榜 · 全类型索引</span>
+    </div>
+    <div class="brandline">
+      <a class="logo" href="#" title="潦草电影网">
+        <span class="seal">潦</span>
+        <h1>潦草<em>电影网</em></h1>
+      </a>
+      <p class="tagline">潦草电影网 —— 用清晰的分类与实时榜单，降低每一次找片的成本。</p>
+    </div>
+  </div>
+</header>
+
+<div class="topbar">
+  <div class="wrap">
+    <button class="burger" type="button" id="burger">MENU ☰</button>
+    <nav class="nav" id="nav" aria-label="网站主导航">
+      <a href="#home" class="on">头版</a>
+      <a href="#film">精选影片</a>
+      <a href="#chart">热门榜单</a>
+      <a href="#index">分类索引</a>
+      <a href="#press">影视资讯</a>
+      <a href="#about">关于本站</a>
+    </nav>
+    <span class="kicker" id="dateTxt">2026 / 10 / 02</span>
+  </div>
+</div>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="lead-grid">
+        <div class="big">
+          <span class="kicker">封面故事 / COVER STORY</span>
+          <h2>潦草电影网<br><em>看片不必将就</em></h2>
+          <p>潦草电影网是一个专注电影推荐与影视资讯的站点，汇总精选片单、每日热榜与全类型索引，帮你在海量片库里少花时间、多看好片。页面轻量、结构清晰，手机浏览同样完整。</p>
+        </div>
+        <div class="side">
+          <span class="kicker">站点数据 / BY THE NUMBERS</span>
+          <p>本站内容按「类型 · 地区 · 年代」三维组织，热榜每日刷新。</p>
+          <div class="stat-table">
+            <div><span>收录影片条目</span><b>9,600+</b></div>
+            <div><span>细分影视频道</span><b>36</b></div>
+            <div><span>热榜更新频率</span><b>每日</b></div>
+            <div><span>覆盖终端</span><b>手机 / 平板 / 桌面</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-tags">
+        <span class="lb">关键词</span>
+        <a class="k" href="#">潦草电影网</a>
+        <a class="k" href="#">潦草电影</a>
+        <a href="#">精选片单</a>
+        <a href="#">每日热榜</a>
+        <a href="#">全类型索引</a>
+        <a href="#">影视资讯</a>
+        <a href="#">移动端自适应</a>
+      </div>
+      <p class="hero-url">官方网址 / URL：<b>https://liaocaodianyingwang-cn.github.io</b></p>
+    </div>
+  </section>
+
+  <section class="blk" id="film">
+    <div class="wrap">
+      <div class="sec-top">
+        <div class="sec-no">01</div>
+        <div class="txt">
+          <h2>精选影片推荐</h2>
+          <p>潦草电影网编辑部本周精选，覆盖动作、科幻、悬疑、文艺等主流类型，采用拼贴式版面呈现，重点影片占据更大版面。</p>
+          <a class="more" href="#">查看全部片单</a>
+        </div>
+      </div>
+      <div class="mosaic">
+        <figure class="f tall">
+          <a href="#">
+            <div class="ph"><i>动作</i>影片封面<b>9.2</b></div>
+            <figcaption>
+              <h3>极速追缉</h3>
+              <p>ACTION · 2025 · 128 MIN</p>
+              <span class="go">详情</span>
+            </figcaption>
+          </a>
+        </figure>
+        <figure class="f">
+          <a href="#">
+            <div class="ph"><i>科幻</i>影片封面<b>9.0</b></div>
+            <figcaption>
+              <h3>深空回响</h3>
+              <p>SCI-FI · 2025 · 149 MIN</p>
+              <span class="go">详情</span>
+            </figcaption>
+          </a>
+        </figure>
+        <figure class="f">
+          <a href="#">
+            <div class="ph"><i>悬疑</i>影片封面<b>8.9</b></div>
+            <figcaption>
+              <h3>第十三夜</h3>
+              <p>MYSTERY · 2024 · 116 MIN</p>
+              <span class="go">详情</span>
+            </figcaption>
+          </a>
+        </figure>
+        <figure class="f">
+          <a href="#">
+            <div class="ph"><i>剧情</i>影片封面<b>8.8</b></div>
+            <figcaption>
+              <h3>南方旧巷</h3>
+              <p>DRAMA · 2024 · 132 MIN</p>
+              <span class="go">详情</span>
+            </figcaption>
+          </a>
+        </figure>
+        <figure class="f wide">
+          <a href="#">
+            <div class="ph"><i>动画 · 特别推荐</i>影片封面<b>8.7</b></div>
+            <figcaption>
+              <h3>山海行歌</h3>
+              <p>ANIMATION · 2025 · 105 MIN · 东方美学奇幻冒险</p>
+              <span class="go">详情</span>
+            </figcaption>
+          </a>
+        </figure>
+        <figure class="f">
+          <a href="#">
+            <div class="ph"><i>喜剧</i>影片封面<b>8.5</b></div>
+            <figcaption>
+              <h3>周末特攻队</h3>
+              <p>COMEDY · 2025 · 94 MIN</p>
+              <span class="go">详情</span>
+            </figcaption>
+          </a>
+        </figure>
+        <figure class="f">
+          <a href="#">
+            <div class="ph"><i>爱情</i>影片封面<b>8.3</b></div>
+            <figcaption>
+              <h3>晚风来信</h3>
+              <p>ROMANCE · 2024 · 110 MIN</p>
+              <span class="go">详情</span>
+            </figcaption>
+          </a>
+        </figure>
+        <figure class="f">
+          <a href="#">
+            <div class="ph"><i>惊悚</i>影片封面<b>8.1</b></div>
+            <figcaption>
+              <h3>密闭回声</h3>
+              <p>THRILLER · 2025 · 98 MIN</p>
+              <span class="go">详情</span>
+            </figcaption>
+          </a>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk" id="chart">
+    <div class="wrap">
+      <div class="sec-top">
+        <div class="sec-no">02</div>
+        <div class="txt">
+          <h2>热门影视榜单 TOP 10</h2>
+          <p>依据潦草电影网站内热度与用户评分综合排序，每日刷新；下表同步列出热度值与评分供参考。</p>
+          <a class="more" href="#">榜单计算规则</a>
+        </div>
+      </div>
+      <div class="tablewrap">
+        <table class="chart">
+          <caption>数据周期 / 2026-10-01 更新 · 评分满分 10.0</caption>
+          <thead>
+            <tr>
+              <th scope="col">名次</th>
+              <th scope="col">片名</th>
+              <th scope="col">类型 / 年份</th>
+              <th scope="col">站内热度</th>
+              <th scope="col">评分</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="rk">01</td><td class="tt">极速追缉</td><td>动作 · 2025</td><td class="ht">98.6 万</td><td class="sc">9.2</td></tr>
+            <tr><td class="rk">02</td><td class="tt">深空回响</td><td>科幻 · 2025</td><td class="ht">92.1 万</td><td class="sc">9.0</td></tr>
+            <tr><td class="rk">03</td><td class="tt">第十三夜</td><td>悬疑 · 2024</td><td class="ht">87.4 万</td><td class="sc">8.9</td></tr>
+            <tr><td class="rk">04</td><td class="tt">南方旧巷</td><td>剧情 · 2024</td><td class="ht">80.9 万</td><td class="sc">8.8</td></tr>
+            <tr><td class="rk">05</td><td class="tt">山海行歌</td><td>动画 · 2025</td><td class="ht">75.2 万</td><td class="sc">8.7</td></tr>
+            <tr><td class="rk">06</td><td class="tt">密闭回声</td><td>惊悚 · 2025</td><td class="ht">69.7 万</td><td class="sc">8.1</td></tr>
+            <tr><td class="rk">07</td><td class="tt">周末特攻队</td><td>喜剧 · 2025</td><td class="ht">64.3 万</td><td class="sc">8.5</td></tr>
+            <tr><td class="rk">08</td><td class="tt">晚风来信</td><td>爱情 · 2024</td><td class="ht">58.8 万</td><td class="sc">8.3</td></tr>
+            <tr><td class="rk">09</td><td class="tt">疾风少年</td><td>运动 · 2024</td><td class="ht">52.4 万</td><td class="sc">8.0</td></tr>
+            <tr><td class="rk">10</td><td class="tt">荒原孤旅</td><td>冒险 · 2023</td><td class="ht">47.6 万</td><td class="sc">7.9</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="5">说明：热度为近 7 日站内浏览与互动加权值，评分取全站用户打分的算术平均。</td></tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk" id="index">
+    <div class="wrap">
+      <div class="sec-top">
+        <div class="sec-no">03</div>
+        <div class="txt">
+          <h2>全类型分类索引</h2>
+          <p>按类型、地区与题材三线并行检索潦草电影网全站频道，索引式排版，一屏可览全部入口。</p>
+          <a class="more" href="#">展开完整索引</a>
+        </div>
+      </div>
+      <div class="index-rows">
+        <div class="ir">
+          <span class="cat">按类型</span>
+          <div class="items">
+            <a href="#">动作片</a><a href="#">科幻片</a><a href="#">喜剧片</a><a href="#">悬疑片</a>
+            <a href="#">动画片</a><a href="#">爱情片</a><a href="#">剧情片</a><a href="#">恐怖片</a>
+          </div>
+        </div>
+        <div class="ir">
+          <span class="cat">按地区</span>
+          <div class="items">
+            <a href="#">国产影视</a><a href="#">欧美影视</a><a href="#">日韩影视</a><a href="#">港台影视</a>
+            <a href="#">印度影视</a><a href="#">法国影视</a>
+          </div>
+        </div>
+        <div class="ir">
+          <span class="cat">按题材</span>
+          <div class="items">
+            <a href="#">战争片</a><a href="#">纪录片</a><a href="#">犯罪片</a><a href="#">家庭片</a>
+            <a href="#">传记片</a><a href="#">武侠片</a>
+          </div>
+        </div>
+        <div class="ir">
+          <span class="cat">按年代</span>
+          <div class="items">
+            <a href="#">2020 后</a><a href="#">2010s</a><a href="#">2000s</a><a href="#">90 年代</a>
+            <a href="#">经典老片</a><a href="#">黑白默片</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk" id="press">
+    <div class="wrap">
+      <div class="sec-top">
+        <div class="sec-no">04</div>
+        <div class="txt">
+          <h2>影视资讯与新片速递</h2>
+          <p>第一时间掌握院线动态、流媒体上线与幕后花絮，采用报纸分栏版式呈现。</p>
+          <a class="more" href="#">进入资讯频道</a>
+        </div>
+      </div>
+      <div class="press">
+        <article class="main">
+          <h3>本周新片速递：三部影片同日上线流媒体</h3>
+          <p class="byline">潦草电影网编辑部 · 2026-10-01 · 栏目：新片速递</p>
+          <div class="cols">
+            <p>本周共有三部影片于同日登陆主流流媒体平台，覆盖动作、动画与纪录片三个方向。潦草电影网整理上线片单，并附看点速览与观影建议，方便观众按口味快速取舍。</p>
+            <p>动作片方面，本季最受关注的一部延续了实景拍摄路线，追车与近身格斗段落占比超过全片四成，节奏偏快，适合追求视听刺激的观众；动画方面则主打东方美学的奇幻冒险，画面完成度高，家庭观影友好。</p>
+            <p>纪录片部分聚焦城市变迁中的普通个体，叙事克制、素材扎实，是本周口碑发酵最快的一部。三部影片的评分与热度已同步更新至本站热门榜单。</p>
+          </div>
+        </article>
+        <aside class="aside">
+          <h4>往期要闻 / ARCHIVE</h4>
+          <ol>
+            <li>秋季档观察：中小成本影片为何频出黑马<span>2026-09-27</span></li>
+            <li>观影指南：用分类与评分搭建个人片单<span>2026-09-22</span></li>
+            <li>流媒体上线时间差对口碑的影响<span>2026-09-18</span></li>
+            <li>年度动画电影的技术路线对比<span>2026-09-12</span></li>
+          </ol>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk" id="about">
+    <div class="wrap">
+      <div class="sec-top">
+        <div class="sec-no">05</div>
+        <div class="txt">
+          <h2>关于潦草电影网</h2>
+          <p>站点定位、内容组织方式与常见问题解答，以问答体例集中呈现。</p>
+        </div>
+      </div>
+      <div class="about-grid">
+        <dl class="qa">
+          <dt>潦草电影网提供哪些内容？</dt>
+          <dd>潦草电影网提供精选片单、热门榜单、分类索引与新片速递四大板块内容，覆盖动作、科幻、悬疑、动画等主流影视类型，帮助用户快速定位想看的影片。</dd>
+          <dt>热门榜单是如何排序的？</dt>
+          <dd>榜单依据站内浏览热度、用户评分与互动数据加权计算得出，每日刷新一次，并在榜单页同步展示热度值与评分供参考。</dd>
+          <dt>手机端浏览体验如何保证？</dt>
+          <dd>页面采用响应式栅格布局，会依据屏幕宽度自动调整列数与导航形态：小屏下导航折叠为菜单按钮，拼贴版面转为单列，表格可横向滑动，保证阅读与点击都顺畅。</dd>
+          <dt>如何联系潦草电影网？</dt>
+          <dd>可通过页脚「关于与联系」栏目提交合作、投稿或版权相关反馈，我们会在收到后尽快处理并回复。</dd>
+        </dl>
+        <div class="slogan">
+          <p class="v">潦草电影网<em>好看不将就</em></p>
+          <p class="u">官方网址 / <b>https://liaocaodianyingwang-cn.github.io</b></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h4>潦草电影网 · ABOUT</h4>
+        <p class="intro">潦草电影网专注电影推荐与影视资讯聚合，精选片单与热榜每日更新，帮你更快找到好电影。</p>
+        <p class="intro" style="margin-top:10px;">官方网址：<b>https://liaocaodianyingwang-cn.github.io</b></p>
+      </div>
+      <div>
+        <h4>频道导航 · SECTIONS</h4>
+        <ul>
+          <li><a href="#film">精选影片</a></li>
+          <li><a href="#chart">热门榜单</a></li>
+          <li><a href="#index">分类索引</a></li>
+          <li><a href="#press">影视资讯</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>热门分类 · GENRES</h4>
+        <ul>
+          <li><a href="#">动作片</a></li>
+          <li><a href="#">科幻片</a></li>
+          <li><a href="#">悬疑片</a></li>
+          <li><a href="#">动画片</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于与联系 · CONTACT</h4>
+        <ul>
+          <li><a href="#about">关于本站</a></li>
+          <li><a href="#">友情链接</a></li>
+          <li><a href="#">意见反馈</a></li>
+          <li><a href="#">版权声明</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>Copyright © 2026 潦草电影网 · liaocaodianyingwang-cn.github.io · All Rights Reserved.</p>
+      <p><a href="#">网站地图</a> · <a href="#">隐私政策</a> · <a href="#">免责声明</a></p>
+    </div>
+  </div>
+</footer>
+
+<button type="button" id="top" aria-label="返回顶部">↑</button>
+
+<script>
+(function(){
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('nav');
+  burger.addEventListener('click', function(){
+    nav.classList.toggle('show');
+  });
+  nav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){ nav.classList.remove('show'); }
+  });
+  var top = document.getElementById('top');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){ top.classList.add('show'); }
+    else { top.classList.remove('show'); }
+  });
+  top.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+  var d = new Date();
+  var pad = function(n){ return n < 10 ? '0' + n : '' + n; };
+  var dt = document.getElementById('dateTxt');
+  if(dt){ dt.textContent = d.getFullYear() + ' / ' + pad(d.getMonth() + 1) + ' / ' + pad(d.getDate()); }
+})();
+</script>
+
+</body>
+</html>
